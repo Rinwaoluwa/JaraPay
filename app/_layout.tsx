@@ -4,7 +4,7 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack, Navigator } from "expo-router";
+import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
@@ -32,43 +32,48 @@ export default function RootLayout() {
 
   return (
     <ThemeProvider value={colorScheme === "dark" ? DarkTheme : DefaultTheme}>
-        <RootLayoutNav />
+      <RootLayoutNav />
     </ThemeProvider>
   );
 }
 
 function RootLayoutNav() {
-  const onboarded = false;
-  const color = useThemeColor("primary");
+  const tintColor = useThemeColor("primary");
+  const titleColor = useThemeColor("tint");
   return (
     <Stack
-      screenOptions={
-        {
-          // headerShown: false,
-          // title: 'TRUE'
-        }
-      }
+    screenOptions={{
+      headerTintColor: tintColor,
+      headerTitleStyle: {color: titleColor},
+      
+    }}
     >
-      {onboarded ? (
-        <>
-          <Stack.Screen name="(tabs)" />
-          <Stack.Screen
-            name="authentication"
-            options={{
-              headerShown: false,
-            }}
-          />
-          <Stack.Screen
-            name="create_account"
-            options={{
-              headerShown: true,
-              title: "Create Account",
-            }}
-          />
-        </>
-      ) : (
-        <Stack.Screen name="onboarding" />
-      )}
+      <Stack.Screen
+        name="(tabs)"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="index"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="authentication"
+        options={{
+          headerShown: false,
+        }}
+      />
+      <Stack.Screen
+        name="create_account"
+        options={{
+          // headerShown: false,
+          headerBackTitleVisible: false,
+          title: "Create Account",
+        }}
+      />
     </Stack>
   );
 }

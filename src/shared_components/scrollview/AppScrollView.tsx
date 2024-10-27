@@ -1,11 +1,11 @@
 import { View, ScrollView } from "react-native";
-import React, {  LegacyRef, forwardRef } from "react";
+import React, {  LegacyRef, Ref, forwardRef } from "react";
 import { AppScrollViewProps } from "./type";
 
 export const AppScrollView = forwardRef(
   (
     { children, ...props }: AppScrollViewProps,
-    ref: LegacyRef<ScrollView>,
+    ref: Ref<ScrollView>,
   ) => {
     return (
       <ScrollView

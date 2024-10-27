@@ -21,6 +21,16 @@ const widthPixel = (size: number) => {
 const heightPixel = (size: number) => {
   return appTextNormalizer(size, "HEIGHT");
 };
+
+const heightPixelFromDeviceHeight = (size: number) => {
+  return SCREEN_HEIGHT * size;
+};
+
+const widthPixelFromDeviceWidth = (size: number) => {
+  return SCREEN_WIDTH * size;
+};
+
+
 //for font  pixel
 const fontPixel = (size: number) => {
   return appTextNormalizer(size);
@@ -49,4 +59,6 @@ export {
   pixelSizeVertical,
   pixelSizeHorizontal,
   normalise,
+  widthPixelFromDeviceWidth, 
+  heightPixelFromDeviceHeight
 };

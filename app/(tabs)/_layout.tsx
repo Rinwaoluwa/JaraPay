@@ -14,13 +14,13 @@ export default function TabLayout() {
       screenOptions={{
         tabBarActiveTintColor: selectedTab,
         tabBarInactiveTintColor: unSelectedTab,
-        headerShown: false,
+        // headerShown: false,
       }}
     >
       <Tabs.Screen
         name="index"
         options={{
-          title: "Home",
+          title: "BBBaag",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "home" : "home-outline"}

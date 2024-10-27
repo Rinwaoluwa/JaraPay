@@ -16,6 +16,8 @@ import { AppConstants } from "@/src/config/constants/AppConstants";
 import { AppText } from "@/src/shared_components/text/AppText";
 import { Row } from "@/src/shared_components/row/Row";
 import { AppButton } from "@/src/shared_components/button/AppButton";
+import { router } from "expo-router";
+import { heightPixel } from "@/src/config/utils/Responsiveness";
 
 const { width } = Dimensions.get("screen");
 
@@ -29,7 +31,6 @@ export default function OnboardingScreen() {
     setCurrentIndex(index);
   };
   const isLast = currentIndex == AppConstants.onboardingImages.length - 1;
-  console.log(`CURRENT INDEX IS ${currentIndex}  IS IT LLAST `, isLast);
   return (
     <Box applySafeArea={false} paddingRight={0} paddingLeft={0}>
       <AppScrollView
@@ -38,22 +39,23 @@ export default function OnboardingScreen() {
         horizontal
         onScroll={handleScroll}
         scrollEventThrottle={16}
+        // contentContainerStyle={{flexShrink: 1}}
       >
         {AppConstants.onboardingImages.map((item, index) => (
           <OnboardItemView key={`${index + item}`} image={item} />
         ))}
       </AppScrollView>
-      <Padding paddingHorizontal={8}>
-        <Spacing height={32} />
+      <Padding paddingHorizontal={8} paddingBottom={heightPixel(30)}>
+        <Spacing height={heightPixel(32)} />
         <AppText fontWeight={"700"} fontSize={32}>
           Easy Payments
         </AppText>
-        <Spacing height={32} />
+        <Spacing height={heightPixel(32)} />
         <AppText>
           Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed vitae
           dictum turpis. Fusce hendrerit quam vel.
         </AppText>
-        <Spacing height={64} />
+        <Spacing height={heightPixel(64)} />
         <Row axisAlignment="space-between" alignItems="baseline">
           <Row spacing={8}>
             {AppConstants.onboardingImages.map((item, index) => (
@@ -65,12 +67,11 @@ export default function OnboardingScreen() {
           </Row>
           <AppButton
             width={86}
-            // height={30}
             title="Next"
             onPress={() => {
               const offsetX = width * (currentIndex + 1);
               if (isLast) {
-                console.log("first");
+                router.push("/authentication");
               } else {
                 scrollController.current?.scrollTo({
                   animated: true,

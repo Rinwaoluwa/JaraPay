@@ -1,6 +1,6 @@
 import { Image } from "react-native";
 import { Box } from "@/src/shared_components/box/Box";
-import AppSvg from "@/src/shared_components/svg/AppSvg";
+import AppSvg from "@/src/shared_components/svg_icon/AppSvg";
 import { Spacing } from "@/src/shared_components/spacing/Spacing";
 import {
   heightPixel,

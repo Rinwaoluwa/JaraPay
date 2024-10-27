@@ -12,3 +12,6 @@ export class AppColors {
   static primary300 = "#C7E8D6";
   static primary400 = "#E3F3EB";
 }
+
+
+export type AppColorPallete = keyof typeof AppColors;

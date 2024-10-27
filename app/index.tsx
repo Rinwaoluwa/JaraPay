@@ -1,11 +1,6 @@
-import AuthenticationScreen from "@/src/screens/authentication/AuthenticationScreen";
-import { useNavigation } from "expo-router";
+import OnboardingScreen from "@/src/screens/onboarding/OnboardingScreen";
 
-export default ({}) => {
-  const navigation = useNavigation();
-  navigation.setOptions({
-    
-  })
-  
-  return <AuthenticationScreen />;
+export default () => {
+  const onboarded = false;
+  return <OnboardingScreen />;
 };

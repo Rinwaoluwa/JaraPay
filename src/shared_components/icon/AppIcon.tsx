@@ -1,17 +1,23 @@
-import { StyleSheet, Text, View } from "react-native";
 import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
-import { type IconProps } from "@expo/vector-icons/build/createIconSet";
-import { type ComponentProps } from "react";
+import { AppIconProps } from "./type";
+import { useThemeColor } from "@/src/config/hooks/useThemeColor";
 
-const AppIcon = ({
+export const AppIcon = ({
+  name,
   size,
-  style,
-  ...rest
-}: IconProps<ComponentProps<typeof Ionicons>["name"]>) => {
-  return <Ionicons size={size ?? 28} style={style} {...rest} />;
+  color,
+  onPress,
+  onLongPress,
+}: AppIconProps) => {
+  const iconColor = useThemeColor("tint");
+  return (
+    <Ionicons
+      name={name}
+      size={size ?? 28}
+      color={color ?? iconColor}
+      onPress={onPress}
+      onLongPress={onLongPress}
+    />
+  );
 };
-
-export default AppIcon;
-
-const styles = StyleSheet.create({});

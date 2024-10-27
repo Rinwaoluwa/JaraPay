@@ -7,10 +7,10 @@ import {
 import React from "react";
 import { AppButtonProps } from "./type";
 import { useThemeColor } from "@/src/config/hooks/useThemeColor";
-import { AppColors } from "@/src/config/utils/Colors";
+import { AppColorPallete, AppColors } from "@/src/config/utils/Colors";
 import { Row } from "../row/Row";
-import { AppText } from "../text/AppText";
 import { widthPixel } from "@/src/config/utils/Responsiveness";
+import { AppText } from "../text/AppText";
 
 export function AppButton({
   title,
@@ -18,7 +18,7 @@ export function AppButton({
   prefix,
   suffix,
   isEnabled = true,
-  isLoading = false,
+  loading = false,
   loadingIcon,
   loadingIconPosition = "left",
   borderButton = false,
@@ -40,22 +40,22 @@ export function AppButton({
           borderColor: borderButton ? buttonColor : AppColors.transparent,
           borderWidth: borderButton ? 1 : 0,
           height: height ?? 60,
-          width: width ??  widthPixel(374),
+          width: width ?? widthPixel(374),
           borderRadius: borderRadius ?? 10,
           backgroundColor: borderButton ? AppColors.transparent : buttonColor,
           ...styles.button,
         }}
       >
         <Row spacing={8}>
-          {isLoading && loadingIconPosition === "left"
+          {loading && loadingIconPosition === "left"
             ? loadingIconComponent
             : prefix}
-          <AppText
-            color={textColor ?? (borderButton ? buttonColor : AppColors.white)}
+          {/* <AppText
+            color={textColor ?? (borderButton ? buttonColor : AppColors.white) as AppColorPallete}
           >
             {title}
-          </AppText>
-          {isLoading && loadingIconPosition === "right"
+          </AppText> */}
+          {loading && loadingIconPosition === "right"
             ? loadingIconComponent
             : suffix}
         </Row>
