@@ -42,12 +42,12 @@ export const Stepper: React.FC<StepperProps> = ({
     const colorInActive = inactiveColor ?? AppColors.grey10;
     const stepColor =
       activeStep || completedSteps ? colorActive : colorInActive;
-    const stepLineColor =
-      activeStep || completedSteps ? colorActive : AppColors.grey10;
+    const stepLineColor = completedSteps ? colorActive : AppColors.grey10;
     const textColor =
-      activeStep || completedSteps ? colorActive : useThemeColor("text");
+      activeStep || completedSteps ? colorActive : AppColors.black;
 
-      const size = activeStep || completedSteps  ? stepSize : 8;
+    const size = stepSize;
+    // const size = activeStep ? stepSize : 8;
 
     return (
       <View key={index} style={styles.stepContainer}>
@@ -79,9 +79,12 @@ export const Stepper: React.FC<StepperProps> = ({
           {renderStepIconIf && (
             <>
               {completedSteps ? (
-                <AppIcon name="checkmark-circle" onPress={() => {
-                  if (onPressStep) onPressStep(stepIndexNumber);
-                }} />
+                <AppIcon
+                  name="checkmark-circle"
+                  onPress={() => {
+                    if (onPressStep) onPressStep(stepIndexNumber);
+                  }}
+                />
               ) : (
                 <Pressable
                   onPress={() => {

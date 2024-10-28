@@ -2,6 +2,7 @@ import React from "react";
 import Ionicons from "@expo/vector-icons/Ionicons";
 import { AppIconProps } from "./type";
 import { useThemeColor } from "@/src/config/hooks/useThemeColor";
+import { AppColors } from "@/src/config/utils/Colors";
 
 export const AppIcon = ({
   name,
