@@ -3,6 +3,8 @@ import {
   TouchableOpacity,
   StyleSheet,
   ActivityIndicator,
+  Keyboard,
+  Text,
 } from "react-native";
 import React from "react";
 import { AppButtonProps } from "./type";
@@ -33,7 +35,12 @@ export function AppButton({
   return (
     <TouchableOpacity
       style={styles.container}
-      onPress={isEnabled ? onPress : () => {}}
+      onPress={() => {
+        if (isEnabled) {
+          onPress();
+          Keyboard.dismiss();
+        }
+      }}
     >
       <View
         style={{
@@ -51,7 +58,12 @@ export function AppButton({
             ? loadingIconComponent
             : prefix}
           {/* <AppText
-            color={textColor ?? (borderButton ? buttonColor : AppColors.white) as AppColorPallete}
+            color={
+              textColor ??
+              ((borderButton
+                ? buttonColor
+                : AppColors.white) as AppColorPallete)
+            }
           >
             {title}
           </AppText> */}

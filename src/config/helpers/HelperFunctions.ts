@@ -12,3 +12,4 @@ export class HelperFunctions {
     stringValue.replaceAll(regex, " ").split(' ').map((word) => HelperFunctions.toCapitalized({stringValue: word})).join(' ');
   }
 }
+//`^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$'`

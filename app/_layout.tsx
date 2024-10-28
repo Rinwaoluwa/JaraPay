@@ -74,6 +74,14 @@ function RootLayoutNav() {
           title: "Create Account",
         }}
       />
+      <Stack.Screen
+        name="welcome"
+        options={{
+          // headerShown: false,
+          headerBackTitleVisible: false,
+          title: "",
+        }}
+      />
     </Stack>
   );
 }

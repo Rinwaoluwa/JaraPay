@@ -1,12 +1,15 @@
 import { View, ScrollView } from "react-native";
-import React, {  LegacyRef, Ref, forwardRef } from "react";
+import React, {
+  ForwardedRef,
+  LegacyRef,
+  Ref,
+  RefObject,
+  forwardRef,
+} from "react";
 import { AppScrollViewProps } from "./type";
 
 export const AppScrollView = forwardRef(
-  (
-    { children, ...props }: AppScrollViewProps,
-    ref: Ref<ScrollView>,
-  ) => {
+  ({ children, ...props }: AppScrollViewProps, ref: LegacyRef<ScrollView>) => {
     return (
       <ScrollView
         ref={ref}
@@ -17,6 +20,7 @@ export const AppScrollView = forwardRef(
         showsVerticalScrollIndicator={
           props.showsVerticalScrollIndicator ?? false
         }
+        keyboardDismissMode="on-drag"
       >
         {children}
       </ScrollView>

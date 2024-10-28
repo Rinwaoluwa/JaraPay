@@ -1,8 +1,10 @@
 import React from "react";
-import { View, StyleSheet, Text } from "react-native";
+import { View, StyleSheet, Text, Pressable } from "react-native";
 import { AppText } from "../text/AppText";
 import { useThemeColor } from "@/src/config/hooks/useThemeColor";
-import { AppColorPallete } from "@/src/config/utils/Colors";
+import { AppColorPallete, AppColors } from "@/src/config/utils/Colors";
+import { fontPixel } from "@/src/config/utils/Responsiveness";
+import { AppIcon } from "../icon/AppIcon";
 
 interface StepperProps {
   steps: Array<{
@@ -15,6 +17,7 @@ interface StepperProps {
   lineHeight?: number;
   labelStyle?: Object;
   activeLabelStyle?: Object;
+  onPressStep?: (stepIndexx: number) => void;
 }
 
 export const Stepper: React.FC<StepperProps> = ({
@@ -25,82 +28,111 @@ export const Stepper: React.FC<StepperProps> = ({
   stepSize = 24,
   lineHeight = 2,
   labelStyle = {},
+  onPressStep,
   activeLabelStyle = {},
 }) => {
   const renderStep = (index: number) => {
-    const isActive = index <= currentStep - 1;
+    const renderStepIconIf = index % 2 == 0;
+    //~~ ROUNDS THE NUMBER TO A WHOLE NUMBER
+    const stepIndexNumber = ~~(index / 2);
+    const activeStep = stepIndexNumber == currentStep;
+    const completedSteps = stepIndexNumber < currentStep;
 
     const colorActive = activeColor ?? useThemeColor("primary");
-    const colorInActive = inactiveColor ?? useThemeColor("tabIconDefault");
-    const stepColor = isActive ? colorActive : colorInActive;
-    const textColor = isActive ? colorActive : colorInActive;
+    const colorInActive = inactiveColor ?? AppColors.grey10;
+    const stepColor =
+      activeStep || completedSteps ? colorActive : colorInActive;
+    const stepLineColor =
+      activeStep || completedSteps ? colorActive : AppColors.grey10;
+    const textColor =
+      activeStep || completedSteps ? colorActive : useThemeColor("text");
+
+      const size = activeStep || completedSteps  ? stepSize : 8;
 
     return (
       <View key={index} style={styles.stepContainer}>
         <View style={styles.stepAndLineContainer}>
-          {/* Line before step (hide for first step) */}
-          {index !== 0 && (
+          {/* {renderStepIconIf ? (
+            <View
+              style={[
+                styles.step,
+                {
+                  width: stepSize,
+                  height: stepSize,
+                  borderRadius: stepSize / 2,
+                  borderColor: stepColor,
+                  backgroundColor: stepColor,
+                },
+              ]}
+            />
+          ) : (
             <View
               style={[
                 styles.line,
                 {
-                  backgroundColor: isActive ? activeColor : inactiveColor,
+                  backgroundColor: stepLineColor,
                   height: lineHeight,
                 },
               ]}
             />
-          )}
-
-          {/* Step circle */}
-          <View
-            style={[
-              styles.step,
-              {
-                width: stepSize,
-                height: stepSize,
-                borderRadius: stepSize / 2,
-                borderColor: isActive ? activeColor : inactiveColor,
-                backgroundColor: isActive ? activeColor : "white",
-              },
-            ]}
-          />
-          {/* Line after step (hide for last step) */}
-          {index !== steps.length - 1 && (
-            <View
-              style={[
-                styles.line,
-                {
-                  backgroundColor:
-                    index < currentStep - 1 ? activeColor : inactiveColor,
-                  height: lineHeight,
-                },
-              ]}
-            />
+          )} */}
+          {renderStepIconIf && (
+            <>
+              {completedSteps ? (
+                <AppIcon name="checkmark-circle" onPress={() => {
+                  if (onPressStep) onPressStep(stepIndexNumber);
+                }} />
+              ) : (
+                <Pressable
+                  onPress={() => {
+                    if (onPressStep) onPressStep(stepIndexNumber);
+                  }}
+                >
+                  <View
+                    style={[
+                      styles.step,
+                      {
+                        width: size,
+                        height: size,
+                        borderRadius: size / 2,
+                        borderColor: stepColor,
+                        backgroundColor: stepColor,
+                      },
+                    ]}
+                  />
+                </Pressable>
+              )}
+              <View
+                style={[
+                  styles.line,
+                  {
+                    backgroundColor: stepLineColor,
+                    height: lineHeight,
+                  },
+                ]}
+              />
+            </>
           )}
         </View>
-
-        {/* Label text */}
-        <AppText
-          // textAlign='center'
-          color={textColor}
-          fontSize={12}
-          fontWeight={"400"}
-          // style={[
-          //   styles.label,
-          //   labelStyle,
-          //   isActive && styles.activeLabel,
-          //   isActive && activeLabelStyle,
-          // ]}
-        >
-          {steps[index].title}
-        </AppText>
+        {renderStepIconIf && (
+          <AppText
+            color={textColor}
+            textAlign="center"
+            fontSize={fontPixel(11)}
+            fontWeight={"400"}
+          >
+            {steps[stepIndexNumber].title}
+          </AppText>
+        )}
       </View>
     );
   };
 
   return (
     <View style={styles.container}>
-      {Array.from({ length: steps.length }, (_, index) => renderStep(index))}
+      {Array.from({ length: steps.length * 2 - 1 }, (_, index) =>
+        renderStep(index),
+      )}
     </View>
   );
 };
@@ -108,35 +140,23 @@ export const Stepper: React.FC<StepperProps> = ({
 const styles = StyleSheet.create({
   container: {
     flexDirection: "row",
-    alignItems: "flex-start",
-    justifyContent: "flex-end",
-    paddingHorizontal: 16,
+    // flex: 1,
+    justifyContent: "center",
   },
   stepContainer: {
-    flex: 1,
-    // alignItems: 'center',
+    // flex: 1,
+    alignItems: "center",
   },
   stepAndLineContainer: {
     flexDirection: "row",
     alignItems: "center",
-    width: "100%",
+    // backgroundColor: "red",
   },
   step: {
     borderWidth: 2,
-    justifyContent: "center",
-    alignItems: "center",
   },
   line: {
     flex: 1,
-  },
-  label: {
-    marginTop: 8,
-    fontSize: 12,
-    color: "#666666",
-    textAlign: "center",
-  },
-  activeLabel: {
-    color: "#000000",
-    fontWeight: "500",
+    width: "200%",
   },
 });

@@ -23,7 +23,7 @@ const { width } = Dimensions.get("screen");
 
 export default function OnboardingScreen() {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const scrollController = useRef<ScrollView>();
+  const scrollController = useRef<ScrollView>(null);
 
   const handleScroll = (event: NativeSyntheticEvent<NativeScrollEvent>) => {
     const contentOffset = event.nativeEvent.contentOffset.x;
@@ -39,7 +39,7 @@ export default function OnboardingScreen() {
         horizontal
         onScroll={handleScroll}
         scrollEventThrottle={16}
-        // contentContainerStyle={{flexShrink: 1}}
+        style={{ flexGrow: 0 }}
       >
         {AppConstants.onboardingImages.map((item, index) => (
           <OnboardItemView key={`${index + item}`} image={item} />

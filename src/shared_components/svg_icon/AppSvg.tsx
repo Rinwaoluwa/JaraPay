@@ -1,7 +1,7 @@
 import { SvgIcons } from "@/src/config/utils/Svgs";
 import { SvgProp } from "./type";
 
-export default function AppSvg({
+export default function AppSvgIcon({
   name,
   size = 24,
   showBackgroundColor,

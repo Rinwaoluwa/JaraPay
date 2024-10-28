@@ -2,18 +2,21 @@ import { Text } from "react-native";
 import { AppTextStyle } from "./type";
 import { useThemeColor } from "@/src/config/hooks/useThemeColor";
 import { fontPixel } from "@/src/config/utils/Responsiveness";
+import { ForwardedRef, forwardRef } from "react";
 
-export function AppText({
+export const AppText = forwardRef(({
   children,
   color,
   fontSize,
   fontWeight,
   fontFamily,
   ...styleProps
-}: AppTextStyle) {
+}: AppTextStyle, ref: ForwardedRef<Text>) => {
   const fontColor = color ?? useThemeColor("text");
+  
   return (
     <Text
+      ref={ref}
       style={{
         color: fontColor,
         fontSize: fontPixel(fontSize ?? 16),
@@ -25,4 +28,4 @@ export function AppText({
       {children}
     </Text>
   );
-}
+});

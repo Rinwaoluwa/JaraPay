@@ -6,7 +6,7 @@ import { Ionicons } from '@expo/vector-icons';
 type IconName = keyof typeof Ionicons.glyphMap;
 //extends Omit<AppTextInputProps, 'onBlur' | 'onFocus'> 
 export interface AppTextInputProps {
-    label: string;
+    label?: string;
     name: string;
     error?: string;
     placeholder?: string;

@@ -25,7 +25,7 @@ export default function AppCheckbox({
       text={text}
       style={{borderRadius: 0}}
       iconStyle={{ borderColor: "red", borderRadius: 0, ...iconStyle }}
-      innerIconStyle={{ borderWidth: 2, ...innerIconStyle }}
+      innerIconStyle={{ borderRadius:0, borderWidth: 2, ...innerIconStyle }}
       textStyle={{ textAlign: "center", fontFamily: "Satoshi", ...textStyle }}
       onPress={onPress}
     />

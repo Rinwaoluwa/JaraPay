@@ -1,8 +1,8 @@
 import { AppColorPallete } from "@/src/config/utils/Colors";
 import { ReactNode } from "react";
-import {  TextStyle } from "react-native";
+import {  TextProps, TextStyle, ViewStyle } from "react-native";
 
-export interface AppTextStyle extends TextStyle{
+export interface AppTextStyle extends TextStyle, TextProps{
   color?: string;
   fontFamily?: FontFamily;
   children: ReactNode;

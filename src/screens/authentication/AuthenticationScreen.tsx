@@ -1,6 +1,5 @@
 import { Image } from "react-native";
 import { Box } from "@/src/shared_components/box/Box";
-import AppSvg from "@/src/shared_components/svg_icon/AppSvg";
 import { Spacing } from "@/src/shared_components/spacing/Spacing";
 import {
   heightPixel,
@@ -9,13 +8,14 @@ import {
 import { AppText } from "@/src/shared_components/text/AppText";
 import { AppButton } from "@/src/shared_components/button/AppButton";
 import { router } from "expo-router";
+import AppSvgIcon from "@/src/shared_components/svg_icon/AppSvg";
 
 export default function AuthenticationScreen() {
   return (
     <Box alignItems="center">
-      <AppSvg name="logo" />
+      <AppSvgIcon name="logo" />
       <Spacing height={heightPixel(24)} />
-      <AppSvg name="welcome" />
+      <AppSvgIcon name="welcome" />
       <Spacing height={heightPixel(48)} />
       <AppText textAlign="center">Welcome to Jara Pay</AppText>
       <Spacing height={heightPixel(8)} />
