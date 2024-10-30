@@ -1,7 +1,11 @@
 import { View, Text, StyleSheet } from "react-native";
-import React from "react";
+import React, { useState } from "react";
 import { useForm } from "react-hook-form";
-import { fontPixel, heightPixel, widthPixel } from "@/src/config/utils/Responsiveness";
+import {
+  fontPixel,
+  heightPixel,
+  widthPixel,
+} from "@/src/config/utils/Responsiveness";
 import { AppTextInput } from "@/src/shared_components/app_text_field/AppTextField";
 import { Spacing } from "@/src/shared_components/spacing/Spacing";
 import AppSvgIcon from "@/src/shared_components/svg_icon/AppSvg";
@@ -12,7 +16,12 @@ import { AppColors } from "@/src/config/utils/Colors";
 
 export default function CreatePasswordForm() {
   const { control } = useForm();
-  
+
+  const [passwordFieldsState, setPasswordFieldsState] = useState({
+    showPassword: false,
+    showConfirmPassword: false,
+  });
+
   const passwordRules = [
     "Contains at least 8 characters",
     "Must have at least one symbol (@#$%^&*()_+)",
@@ -42,9 +51,11 @@ export default function CreatePasswordForm() {
       <View style={styles.passwordRulesContainer}>
         {passwordRules.map((rule, index) => {
           return (
-            <Row key={`${rule}${index}`} alignItems="center" >
+            <Row key={`${rule}${index}`} alignItems="center">
               <AppIcon name="checkmark-circle-outline" />
-              <AppText fontWeight={"400"} fontSize={fontPixel(12)} >{rule}</AppText>
+              <AppText fontWeight={"400"} fontSize={fontPixel(12)}>
+                {rule}
+              </AppText>
             </Row>
           );
         })}
@@ -54,9 +65,9 @@ export default function CreatePasswordForm() {
 }
 
 const styles = StyleSheet.create({
-    passwordRulesContainer: {
-        backgroundColor: AppColors.primary50,
-        paddingHorizontal: widthPixel(8),
-        paddingVertical: heightPixel(8)
-    } 
+  passwordRulesContainer: {
+    backgroundColor: AppColors.primary50,
+    paddingHorizontal: widthPixel(8),
+    paddingVertical: heightPixel(8),
+  },
 });

@@ -57,7 +57,7 @@ export function AppButton({
           {loading && loadingIconPosition === "left"
             ? loadingIconComponent
             : prefix}
-          <AppText
+          {/* <AppText
             color={
               textColor ??
               ((borderButton
@@ -66,7 +66,7 @@ export function AppButton({
             }
           >
             {title}
-          </AppText>
+          </AppText> */}
           {loading && loadingIconPosition === "right"
             ? loadingIconComponent
             : suffix}

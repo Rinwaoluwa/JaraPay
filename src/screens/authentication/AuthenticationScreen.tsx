@@ -31,7 +31,9 @@ export default function AuthenticationScreen() {
         }}
       />
       <Spacing height={heightPixel(16)} />
-      <AppButton title="Log In" borderButton onPress={() => {}} />
+      <AppButton title="Log In" borderButton onPress={() => {
+        router.push("/login");
+      }} />
     </Box>
   );
 }

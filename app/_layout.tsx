@@ -42,11 +42,11 @@ function RootLayoutNav() {
   const titleColor = useThemeColor("tint");
   return (
     <Stack
-    screenOptions={{
-      headerTintColor: tintColor,
-      headerTitleStyle: {color: titleColor},
-      
-    }}
+      screenOptions={{
+        headerTintColor: 'black',
+        // headerTitleStyle: { color: titleColor },
+        
+      }}
     >
       <Stack.Screen
         name="(tabs)"
@@ -64,20 +64,26 @@ function RootLayoutNav() {
         name="authentication"
         options={{
           headerShown: false,
+          
         }}
       />
       <Stack.Screen
         name="create_account"
         options={{
-          // headerShown: false,
           headerBackTitleVisible: false,
           title: "Create Account",
         }}
       />
       <Stack.Screen
+        name="login"
+        options={{
+          headerBackTitleVisible: false,
+          title: "Login",
+        }}
+      />
+      <Stack.Screen
         name="welcome"
         options={{
-          // headerShown: false,
           headerBackTitleVisible: false,
           title: "",
         }}

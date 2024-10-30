@@ -23,7 +23,7 @@ export const Box = ({
           paddingLeft: paddingLeft ?? 8,
           paddingRight: paddingRight ?? 8,
           ...styelProps,
-          ...styles.container
+          ...styles.container,
         }} 
       >
         {children}

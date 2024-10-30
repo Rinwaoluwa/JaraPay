@@ -19,6 +19,7 @@ export const AppIcon = ({
       color={color ?? iconColor}
       onPress={onPress}
       onLongPress={onLongPress}
+      suppressHighlighting
     />
   );
 };
