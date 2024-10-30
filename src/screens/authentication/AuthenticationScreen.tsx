@@ -12,7 +12,7 @@ import AppSvgIcon from "@/src/shared_components/svg_icon/AppSvg";
 
 export default function AuthenticationScreen() {
   return (
-    <Box alignItems="center">
+    <Box alignItems="center" paddingHorizontal={8}>
       <AppSvgIcon name="logo" />
       <Spacing height={heightPixel(24)} />
       <AppSvgIcon name="welcome" />

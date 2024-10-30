@@ -10,6 +10,8 @@ import { useEffect } from "react";
 import "react-native-reanimated";
 import { useColorScheme } from "@/src/config/hooks/useColorScheme";
 import { useThemeColor } from "@/src/config/hooks/useThemeColor";
+import { fontPixel } from "@/src/config/utils/Responsiveness";
+import { AppIcon } from "@/src/shared_components/icon/AppIcon";
 
 // Prevent the splash screen from auto-hiding before asset loading is complete.
 SplashScreen.preventAutoHideAsync();
@@ -38,15 +40,15 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
-  const tintColor = useThemeColor("primary");
-  const titleColor = useThemeColor("tint");
+  const tintColor = useThemeColor("text");
+  const titleColor = useThemeColor("text");
   return (
     <Stack
-    screenOptions={{
-      headerTintColor: tintColor,
-      headerTitleStyle: {color: titleColor},
-      
-    }}
+      screenOptions={{
+        headerTintColor: tintColor,
+        headerTitleStyle: { color: titleColor },
+        headerLeft: () => <AppIcon name="chevron-back" color="black" />
+      }}
     >
       <Stack.Screen
         name="(tabs)"
@@ -69,9 +71,13 @@ function RootLayoutNav() {
       <Stack.Screen
         name="create_account"
         options={{
-          // headerShown: false,
           headerBackTitleVisible: false,
           title: "Create Account",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontSize: fontPixel(20),
+            color: "black",
+          }
         }}
       />
       <Stack.Screen
