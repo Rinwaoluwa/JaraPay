@@ -32,6 +32,7 @@ export const AppTextInput = ({
   width,
   label,
   onPressSuffixIcon,
+  keyboardType,
   ...props
 }: AppTextInputProps) => {
   return (
@@ -65,6 +66,7 @@ export const AppTextInput = ({
               onFocus={onFocus}
               autoCapitalize="none"
               editable={props?.editable}
+              keyboardType={keyboardType}
               style={styles.textinput}
               {...props}
             />

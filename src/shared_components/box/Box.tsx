@@ -11,23 +11,19 @@ export const Box = ({
   paddingLeft,
   ...style
 }: BoxProps) => {
-  console.log("box style: ", style)
   const { bottom, left, right, top } = useSafeAreaInsets();
   const color = style.backgroundColor ?? useThemeColor("background");
   return (
-    <View style={{ ...styles.container, backgroundColor: color }}>
+    <View style={[{ ...styles.container, backgroundColor: color }, { ...style }]}>
       {/* THIS VIEW REPRESENTS THE SAFE AREA */}
       <View
-        style={[
-          {
-            paddingTop: applySafeArea ? top : 0,
-            paddingBottom: applySafeArea ? bottom : 0,
-            paddingLeft: paddingLeft ?? 8,
-            paddingRight: paddingRight ?? 8,
-            ...styles.container,
-          },
-          { ...style }
-        ]}
+        style={{
+          paddingTop: applySafeArea ? top : 0,
+          paddingBottom: applySafeArea ? bottom : 0,
+          paddingLeft: paddingLeft ?? 8,
+          paddingRight: paddingRight ?? 8,
+          ...styles.container,
+        }}
       >
         {children}
       </View>

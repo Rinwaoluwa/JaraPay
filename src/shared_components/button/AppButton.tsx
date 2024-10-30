@@ -47,8 +47,8 @@ export function AppButton({
         style={{
           borderColor: borderButton ? buttonColor : AppColors.transparent,
           borderWidth: borderButton ? 1 : 0,
-          height: heightPixel(height ?? 60),
-          width: widthPixel(width ?? 374),
+          height: height  ?? heightPixel(60),
+          width: width ?? widthPixel(374),
           borderRadius: normalise(borderRadius ?? 10),
           backgroundColor: borderButton ? AppColors.transparent : buttonColor,
           ...styles.button,

@@ -19,7 +19,7 @@ export default function AppCheckbox({
   const tintColor = activeColor ?? useThemeColor("primary");
   return (
     <BouncyCheckbox
-      size={size ?? 25}
+      size={size ?? 18}
       fillColor={tintColor}
       unFillColor={inactiveColor ?? AppColors.white}
       text={text}
