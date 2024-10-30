@@ -1,6 +1,6 @@
 import { SvgName } from "@/src/config/utils/Svgs";
 import { Control } from "react-hook-form";
-import { TextStyle, ViewStyle } from "react-native";
+import { KeyboardTypeOptions, TextStyle, ViewStyle } from "react-native";
 import { Ionicons } from '@expo/vector-icons';
 
 type IconName = keyof typeof Ionicons.glyphMap;
@@ -25,6 +25,7 @@ export interface AppTextInputProps {
     secureTextEntry?: boolean;
     style?: TextStyle;
     containerStyle?: ViewStyle;
+    keyboardType?: KeyboardTypeOptions;
 }
 
 

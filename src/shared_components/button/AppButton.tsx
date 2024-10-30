@@ -83,7 +83,5 @@ const styles = StyleSheet.create({
   button: {
     alignItems: "center",
     justifyContent: "center",
-    alignSelf: "center",
-    maxWidth: widthPixel(375),
   },
 });

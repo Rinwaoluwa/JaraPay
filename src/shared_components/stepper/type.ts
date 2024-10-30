@@ -1,9 +1,15 @@
+import { AppColorPallete } from "@/src/config/utils/Colors";
+
 export interface StepperProps {
-    steps: number;
-    stepsTitles?: Array<string>;
-    currentStep: number;
-    activeColor?: string;
-    inactiveColor?: string;
-    stepSize?: number;
-    lineHeight?: number;
-  }
+  steps: Array<{
+    title: string;
+  }>;
+  currentStep: number;
+  activeColor?: AppColorPallete;
+  inactiveColor?: AppColorPallete;
+  stepSize?: number;
+  lineHeight?: number;
+  labelStyle?: Object;
+  activeLabelStyle?: Object;
+  onPressStep?: (stepIndexx: number) => void;
+}

@@ -5,20 +5,8 @@ import { useThemeColor } from "@/src/config/hooks/useThemeColor";
 import { AppColorPallete, AppColors } from "@/src/config/utils/Colors";
 import { fontPixel } from "@/src/config/utils/Responsiveness";
 import { AppIcon } from "../icon/AppIcon";
+import { StepperProps } from "./type";
 
-interface StepperProps {
-  steps: Array<{
-    title: string;
-  }>;
-  currentStep: number;
-  activeColor?: AppColorPallete;
-  inactiveColor?: AppColorPallete;
-  stepSize?: number;
-  lineHeight?: number;
-  labelStyle?: Object;
-  activeLabelStyle?: Object;
-  onPressStep?: (stepIndexx: number) => void;
-}
 
 export const Stepper: React.FC<StepperProps> = ({
   steps,
@@ -52,30 +40,6 @@ export const Stepper: React.FC<StepperProps> = ({
     return (
       <View key={index} style={styles.stepContainer}>
         <View style={styles.stepAndLineContainer}>
-          {/* {renderStepIconIf ? (
-            <View
-              style={[
-                styles.step,
-                {
-                  width: stepSize,
-                  height: stepSize,
-                  borderRadius: stepSize / 2,
-                  borderColor: stepColor,
-                  backgroundColor: stepColor,
-                },
-              ]}
-            />
-          ) : (
-            <View
-              style={[
-                styles.line,
-                {
-                  backgroundColor: stepLineColor,
-                  height: lineHeight,
-                },
-              ]}
-            />
-          )} */}
           {renderStepIconIf && (
             <>
               {completedSteps ? (
@@ -147,7 +111,7 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   stepContainer: {
-    // flex: 1,
+    flex: 1,
     alignItems: "center",
   },
   stepAndLineContainer: {

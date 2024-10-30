@@ -2,7 +2,6 @@ import { Tabs } from "expo-router";
 import React from "react";
 
 import { TabBarIcon } from "@/src/shared_components/navigation/TabBarIcon";
-import { useColorScheme } from "@/src/config/hooks/useColorScheme";
 import { useThemeColor } from "@/src/config/hooks/useThemeColor";
 
 export default function TabLayout() {
@@ -20,7 +19,7 @@ export default function TabLayout() {
       <Tabs.Screen
         name="index"
         options={{
-          title: "BBBaag",
+          title: "Home",
           tabBarIcon: ({ color, focused }) => (
             <TabBarIcon
               name={focused ? "home" : "home-outline"}

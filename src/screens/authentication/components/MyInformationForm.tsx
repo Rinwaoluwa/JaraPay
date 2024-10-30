@@ -8,6 +8,7 @@ import { Spacing } from "@/src/shared_components/spacing/Spacing";
 import { AppText } from "@/src/shared_components/text/AppText";
 import { useForm } from "react-hook-form";
 import { AppTouchableText } from "@/src/shared_components/text/AppTouchableText";
+import { PhoneInput } from "@/src/shared_components/phone_number_text_input/PhoneNumberTextInput";
 
 export default function MyInformationForm() {
   const { control } = useForm();
@@ -35,12 +36,9 @@ export default function MyInformationForm() {
         placeholder="e.g Johndoe@123.com"
       />
       <Spacing height={heightPixel(14)} />
-      <AppTextInput
-        label="Phone number"
-        control={control}
-        name="r"
-        placeholder="e.g Johndoe@123.com"
-      />
+
+      <PhoneInput control={control} name="phoneNumber" />
+
       <Spacing height={heightPixel(14)} />
       <AppTextInput
         label="Referral Code"
@@ -51,26 +49,38 @@ export default function MyInformationForm() {
       <Spacing height={heightPixel(14)} />
       <Row>
         <AppCheckbox
-          onPress={(icChecked) => {
-            console.log("CHHECKED VALUE", icChecked);
+          onPress={(isChecked) => {
+            console.log("CHHECKED VALUE", isChecked);
           }}
         />
-        <AppText
-          maxWidth={widthPixel(300)}
-          textAlign="center"
-          fontSize={14}
-          fontWeight={"400"}
-        >
-          I agree to the {"  "}
-          <AppTouchableText color={AppColors.primary} fontWeight={"500"}>
-            Terms and Conditions
+
+        <Row wrap="wrap" alignItems="center">
+          <AppText
+            maxWidth={widthPixel(300)}
+            textAlign="center"
+            fontSize={14}
+            fontWeight={"400"}
+          >
+            I agree to the {" "}
+          </AppText>
+
+          <AppTouchableText fontSize={14} color={AppColors.primary} fontWeight={"400"} alignSelf="flex-end">
+            Terms and Conditions{" "}
           </AppTouchableText>
-          {"  "}
-          and{"  "}
-          <AppTouchableText color={AppColors.primary} fontWeight={"500"}>
+
+          <AppText
+            maxWidth={widthPixel(300)}
+            textAlign="center"
+            fontSize={14}
+            fontWeight={"400"}
+          >
+            and{" "}
+          </AppText>
+
+          <AppTouchableText fontSize={14} color={AppColors.primary} fontWeight={"400"}>
             Privacy Policy
           </AppTouchableText>
-        </AppText>
+        </Row>
       </Row>
     </>
   );

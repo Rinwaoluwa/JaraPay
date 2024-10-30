@@ -4,7 +4,7 @@ import {
   ThemeProvider,
 } from "@react-navigation/native";
 import { useFonts } from "expo-font";
-import { Stack } from "expo-router";
+import { Stack, useRouter } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 import "react-native-reanimated";
@@ -40,6 +40,7 @@ export default function RootLayout() {
 }
 
 function RootLayoutNav() {
+  const router = useRouter();
   const tintColor = useThemeColor("text");
   const titleColor = useThemeColor("text");
   return (
@@ -47,7 +48,8 @@ function RootLayoutNav() {
       screenOptions={{
         headerTintColor: tintColor,
         headerTitleStyle: { color: titleColor },
-        headerLeft: () => <AppIcon name="chevron-back" color="black" />
+        headerLeft: () => <AppIcon name="chevron-back" color="black" onPress={() => router.back()} />,
+        headerShadowVisible: false,
       }}
     >
       <Stack.Screen
@@ -73,6 +75,18 @@ function RootLayoutNav() {
         options={{
           headerBackTitleVisible: false,
           title: "Create Account",
+          headerTitleAlign: "center",
+          headerTitleStyle: {
+            fontSize: fontPixel(20),
+            color: "black",
+          }
+        }}
+      />
+      <Stack.Screen
+        name="login"
+        options={{
+          headerBackTitleVisible: false,
+          title: "Login",
           headerTitleAlign: "center",
           headerTitleStyle: {
             fontSize: fontPixel(20),

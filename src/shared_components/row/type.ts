@@ -6,4 +6,5 @@ export interface RowProps {
   spacing?: number;
   axisAlignment?: FlexStyle["justifyContent"];
   alignItems?:  FlexStyle['alignItems'],
+  wrap?: FlexStyle['flexWrap'];
 }

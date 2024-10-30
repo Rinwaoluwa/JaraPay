@@ -6277,7 +6277,7 @@ lodash.throttle@^4.1.1:
   resolved "https://registry.npmjs.org/lodash.throttle/-/lodash.throttle-4.1.1.tgz"
   integrity sha512-wIkUCfVKpVsWo3JSZlc+8MB5it+2AN5W8J7YVMST30UrvcQNZ1Okbj+rbVniijTWE6FGYy4XJq/rHkas8qJMLQ==
 
-lodash@^4.17.10, lodash@^4.17.13, lodash@^4.17.19, lodash@^4.17.21:
+lodash@^4.17.10, lodash@^4.17.11, lodash@^4.17.13, lodash@^4.17.19, lodash@^4.17.21:
   version "4.17.21"
   resolved "https://registry.npmjs.org/lodash/-/lodash-4.17.21.tgz"
   integrity sha512-v2kDEe57lecTulaDIuNTPy3Ry4gLGJ6Z1O3vE1krgXZNrsQ+LFTGHVxVjcXPs17LhbZVGedAJv8XZ1tvj5FvSg==
@@ -7560,6 +7560,13 @@ react-native-otp-entry@^1.7.2:
   version "1.7.3"
   resolved "https://registry.npmjs.org/react-native-otp-entry/-/react-native-otp-entry-1.7.3.tgz"
   integrity sha512-BN/oEpNMfA0cnw9tB9Oq6PZZQztOiq1Ow/M+rAFd0Nll9aO1gwfCwymgIGI89/+63FkmMbv39LcgsfkZNAYzWw==
+
+react-native-progress-stepper@^1.0.4:
+  version "1.0.4"
+  resolved "https://registry.npmjs.org/react-native-progress-stepper/-/react-native-progress-stepper-1.0.4.tgz"
+  integrity sha512-wgoOcEMhJp5CyQu4E4QRKOQ4NbkPHAroT2lzdjK2AlHPSQN4wUqXyALTOMS9eXe+CnuMdxiNYktoRJWH6NdWww==
+  dependencies:
+    lodash "^4.17.11"
 
 react-native-reanimated@*, react-native-reanimated@~3.10.1:
   version "3.10.1"

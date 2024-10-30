@@ -38,12 +38,12 @@ export function CreateAccount() {
 
   return (
     // [applySafeArea] is set to false because header already handles it
-    <Box applySafeArea={false}>
+    <Box applySafeArea={false} paddingHorizontal={16}>
       <Spacing height={heightPixel(8)} />
       <Stepper
         steps={createAccountSteps}
         currentStep={currentStepIndex}
-        onPressStep={(index) => {
+        onStepPress={(index) => {
           setCurrentStepIndex(index);
         }}
       />
@@ -53,15 +53,16 @@ export function CreateAccount() {
         {showCurrentStepScreen(currentStepIndex)}
         <Spacing height={heightPixel(16)} />
       </AppScrollView>
+      <Spacing height={heightPixel(5)} />
       <AppButton
         title="Continue"
+        width={"100%" as any}
         onPress={() => {
-          console.log("WHAT IS THE INDEX BUTTON", currentStepIndex);
           if (isLastIndex) router.push("/welcome");
           else setCurrentStepIndex(currentStepIndex + 1);
         }}
       />
-      <Spacing height={heightPixel(30)} />
+      <Spacing height={heightPixel(10)} />
     </Box>
   );
 }

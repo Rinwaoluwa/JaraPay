@@ -5,7 +5,7 @@ import { View } from "react-native";
 export default () => (
   <View style={{ padding: 20, flex: 1 }}>
     <View style={{ justifyContent: "center", alignItems: "center", flex: 1 }}>
-      <AppText fontSize={15} color={AppColors.primary}>Landing</AppText>
+      <AppText fontSize={15} color={AppColors.primary}>Explore</AppText>
     </View>
   </View>
 )
